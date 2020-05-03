@@ -8,6 +8,10 @@ class UserController {
   }
 
   async store(req, res) {
+
+    // await knex('users').insert({});
+    const { body } = req;
+    console.log(body);
     return res.json({ store: true });
   }
 
