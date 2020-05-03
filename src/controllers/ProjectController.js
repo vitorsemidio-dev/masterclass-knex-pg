@@ -16,6 +16,10 @@ class ProjectController {
           .select('projects.*', 'users.username');
       }
 
+      const [count] = await knex('projects').count();
+
+      res.header('X-Total-Count', count['count']);
+
       const results = await query;
 
       return res.json(results);
