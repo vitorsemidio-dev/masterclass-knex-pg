@@ -7,13 +7,16 @@ class UserController {
     return res.json(results);
   }
 
-  async store(req, res) {
-
-    const { username } = req.body;
-    await knex('users').insert({
-      username,
-    });
-    return res.json({ store: true });
+  async store(req, res, next) {
+    try {
+      const { username } = req.body;
+      await knex('users').insert({
+        username,
+      });
+      return res.status(201).send();
+    } catch (error) {
+      next(error);
+    }
   }
 
   async delete(req, res) {
