@@ -19,8 +19,15 @@ class UserController {
     }
   }
 
-  async delete(req, res) {
-    return res.json({ delete: true });
+  async delete(req, res, next) {
+    try {
+      const { id } = req.params;
+
+      await knex('users').where({ id }).del();
+      return res.send();
+    } catch (error) {
+      next(error);
+    }
   }
 
   async update(req, res, next) {
