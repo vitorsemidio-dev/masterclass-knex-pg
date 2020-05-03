@@ -3,6 +3,7 @@ const knex = require('../database');
 class UserController {
   async index(req, res) {
     const results = await knex('users')
+      .where('deleted_at', null);
 
     return res.json(results);
   }
@@ -23,7 +24,7 @@ class UserController {
     try {
       const { id } = req.params;
 
-      await knex('users').where({ id }).del();
+      await knex('users').where({ id }).update('deleted_at', new Date);
       return res.send();
     } catch (error) {
       next(error);
