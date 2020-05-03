@@ -1,0 +1,13 @@
+{
+  "name": "masterclass-knex",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "author": "Vitor Emidio <vitorsemidio.96@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
