@@ -6,6 +6,22 @@ class UserController {
 
     return res.json(results);
   }
+
+  async store(req, res) {
+    return res.json({ store: true });
+  }
+
+  async delete(req, res) {
+    return res.json({ delete: true });
+  }
+
+  async update(req, res) {
+    return res.json({ update: true });
+  }
+
+  async show(req, res) {
+    return res.json({ show: true });
+  }
 }
 
 module.exports = new UserController();
