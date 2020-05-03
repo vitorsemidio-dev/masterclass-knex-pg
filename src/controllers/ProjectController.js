@@ -10,6 +10,21 @@ class ProjectController {
       next(error);
     }
   }
+
+  async store(req, res, next) {
+    try {
+      const { title, user_id } = req.body;
+
+      await knex('projects').insert({
+        title,
+        user_id,
+      });
+
+      return res.send();
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new ProjectController();
